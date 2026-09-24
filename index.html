@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b6b5f">
+<meta name="description" content="Casa Segura: evaluación preventiva de vivienda, entorno y preparación familiar.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/logo-casa-segura.png">
+<link rel="stylesheet" href="style.css">
+<title>Casa Segura</title>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="assets/logo-casa-segura.png"><div><b>Casa Segura</b><small>Prevención • Evaluación • Preparación</small></div></div>
+  <button id="theme" class="round">🌙</button>
+</header>
+<nav id="nav">
+<button data-page="inicio" class="active">Inicio</button><button data-page="ubicacion">📍 Ubicación</button><button data-page="vivienda">🏠 Vivienda</button><button data-page="fotos">📸 Fotos</button><button data-page="familia">🎒 Familia</button><button data-page="resultado">🚦 Resultado</button>
+</nav>
+
+<main>
+<section id="inicio" class="page active">
+<div class="hero"><div><span class="eyebrow">DIAGNÓSTICO PREVENTIVO</span><h1>Conoce los riesgos de tu entorno y prepara mejor tu hogar.</h1><p>Casa Segura combina ubicación, preguntas guiadas, fotografías y preparación familiar para generar recomendaciones personalizadas.</p><button class="primary" data-go="ubicacion">Comenzar evaluación →</button></div><div class="hero-card"><span class="big">🏠</span><h2>Una evaluación, tres dimensiones</h2><p>📍 Entorno · 🏠 Vivienda · 🎒 Preparación</p></div></div>
+<div class="grid three"><article><b>📍 Entorno</b><p>Obtén tu ubicación y registra los peligros que reconoces en tu zona.</p></article><article><b>📸 Vivienda</b><p>Registra fotografías guiadas de zonas que deseas revisar.</p></article><article><b>🚦 Resultado</b><p>Visualiza un semáforo, porcentajes y prioridades de mejora.</p></article></div>
+<div class="notice">ℹ️ La app es una herramienta educativa de autoevaluación. No certifica la seguridad estructural de una vivienda ni sustituye una inspección profesional.</div>
+</section>
+
+<section id="ubicacion" class="page">
+<div class="head"><div><span class="eyebrow">PASO 1</span><h2>Analiza el entorno</h2><p>La ubicación ayuda a contextualizar la exposición a peligros.</p></div></div>
+<div class="grid two"><article class="card">
+<h3>📍 Mi ubicación</h3><p id="locText">Todavía no se ha obtenido la ubicación.</p><button id="locBtn" class="primary">Activar ubicación</button><div id="coords" class="mini"></div>
+</article><article class="card"><h3>🌎 Riesgos que reconoces</h3><p>Marca los que existen o podrían existir cerca de tu vivienda.</p>
+<div class="checks" id="hazards"><label><input type=checkbox data-h="Inundación"> 🌧️ Inundación</label><label><input type=checkbox data-h="Huaico o deslizamiento"> 🏔️ Huaico o deslizamiento</label><label><input type=checkbox data-h="Sismo"> 🌎 Sismo</label><label><input type=checkbox data-h="Lluvias intensas"> 🌧️ Lluvias intensas</label><label><input type=checkbox data-h="Tsunami"> 🌊 Tsunami</label><label><input type=checkbox data-h="Incendio"> 🔥 Incendio</label><label><input type=checkbox data-h="Desborde de río o quebrada"> 💧 Desborde de río o quebrada</label></div></article></div>
+<div class="card"><h3>🗺️ Punto de encuentro y evacuación</h3><div class="grid two"><label>¿Conoces un lugar seguro cercano?<select id="safePlace"><option value="">Selecciona</option><option>Sí</option><option>No</option></select></label><label>¿Conoces una ruta de evacuación?<select id="route"><option value="">Selecciona</option><option>Sí</option><option>No</option></select></label></div></div>
+<button class="primary" data-go="vivienda">Continuar →</button>
+</section>
+
+<section id="vivienda" class="page">
+<div class="head"><div><span class="eyebrow">PASO 2</span><h2>Evalúa el estado actual</h2><p>Responde según lo que realmente observas. Si no sabes, elige “No estoy seguro”.</p></div></div>
+<div class="grid two" id="questions"></div>
+<button class="primary" data-go="fotos">Continuar a fotografías →</button>
+</section>
+
+<section id="fotos" class="page">
+<div class="head"><div><span class="eyebrow">PASO 3</span><h2>Registro fotográfico guiado</h2><p>Las fotos son opcionales. Sirven para documentar condiciones visibles; no sustituyen una inspección profesional.</p></div></div>
+<div id="photoGrid" class="grid three"></div>
+</section>
+
+<section id="familia" class="page">
+<div class="head"><div><span class="eyebrow">PASO 4</span><h2>Preparación familiar</h2><p>Comprueba si tienes los elementos básicos para responder ante una emergencia.</p></div></div>
+<div class="grid two"><article class="card"><h3>🎒 Mochila de emergencia</h3><div id="bag" class="checks"></div><p id="bagScore" class="status"></p></article><article class="card"><h3>👨‍👩‍👧‍👦 Plan familiar</h3><label>Punto de encuentro<input id="meeting" placeholder="Ej. parque, colegio o zona acordada"></label><label>Contacto familiar<input id="contact" placeholder="Nombre y teléfono"></label><label>Responsable de mochila<input id="owner" placeholder="Nombre"></label><button id="savePlan" class="primary">Guardar plan</button><p id="planMsg" class="status"></p></article></div>
+<button class="primary" data-go="resultado">Ver resultado →</button>
+</section>
+
+<section id="resultado" class="page">
+<div class="head"><div><span class="eyebrow">RESULTADO</span><h2>Tu índice Casa Segura</h2><p>El resultado resume preparación y condiciones observables; no es una certificación técnica.</p></div></div>
+<div id="resultBox" class="result"></div>
+<div id="priorities" class="grid two"></div>
+<button id="reset" class="secondary">Reiniciar evaluación</button>
+</section>
+</main>
+<footer>Casa Segura · Funciona sin conexión para la evaluación local. Los datos se guardan en este dispositivo.</footer>
+<script src="script.js"></script>
+</body></html>
